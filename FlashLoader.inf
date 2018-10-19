@@ -1,0 +1,43 @@
+## @file
+#  A simple boot loader to load DTB/Initrd/Kernel/Cmdline from flash memory.
+#
+#   Copyright (c) 2010 - 2018, Intel Corporation. All rights reserved.<BR>
+#   This program and the accompanying materials
+#   are licensed and made available under the terms and conditions of the BSD License
+#   which accompanies this distribution. The full text of the license may be found at
+#   http://opensource.org/licenses/bsd-license.
+#
+#   THE PROGRAM IS DISTRIBUTED UNDER THE BSD LICENSE ON AN "AS IS" BASIS,
+#   WITHOUT WARRANTIES OR REPRESENTATIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED.
+#
+##
+
+[Defines]
+  INF_VERSION                    = 0x00010006
+  BASE_NAME                      = FlashLoader
+  FILE_GUID                      = 8a7083ab-230e-4c9c-9a90-8475b647e298
+  MODULE_TYPE                    = UEFI_APPLICATION
+  VERSION_STRING                 = 0.1
+  ENTRY_POINT                    = UefiMain
+
+[Sources]
+  FlashLoader.c
+
+[Packages]
+  EmbeddedPkg/EmbeddedPkg.dec
+  MdePkg/MdePkg.dec
+
+[LibraryClasses]
+  BaseLib
+  DebugLib
+  DevicePathLib
+  FdtLib
+  UefiApplicationEntryPoint
+  UefiLib
+  UefiBootServicesTableLib
+
+[Guids]
+  gFdtTableGuid
+
+[Protocols]
+  gEfiLoadedImageProtocolGuid
